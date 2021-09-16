@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Backtracking</title>
     <style>
         
         pre
@@ -16,6 +16,12 @@
         {
             color: rgb(133, 9, 9);
             font-family:Verdana, Arial, Helvetica, sans-serif;
+        }
+        dt
+        {
+            color: brown;
+            font-family:Verdana, Arial, Helvetica, sans-serif;
+            
         }
     </style>
 </head>
@@ -251,15 +257,27 @@ One of the things that simplifies the above binary tree search is that, at each 
 </ul>
 Let's apply each of these two methods to the problem of coloring a checkerboard. This should be easily solvable; after all, a checkerboard only needs two colors.
 <p>In both methods, the colors are represented by integers, from <code>RED=1</code>or <code>BLUE=4</code>We define the following helper methods. The helper method code isn't displayed here because it's not important for understanding the method that does the backtracking.</p>
-<pre>
-boolean mapIsOK()
-    <font font size="2px" color="black">Used by method 1 to check (at a leaf node) whether the entire map is colored correctly.</font>
+<dl>
+    <dt>
+        boolean mapIsOK()
+    </dt>
+    <dd>
+        Used by method 1 to check (at a leaf node) whether the entire map is colored correctly.
+    </dd>
+    <br>
 
-boolean okToColor(int row, int column, int color)
-    <font font size="2px" color="black">boolean okToColor(int row, int column, int color)</font>
+    <dt>
+        boolean okToColor(int row, int column, int color)
+    </dt>
 
-int[] nextRowAndColumn(int row, int column)
-    <font font size="2px" color="black">Used by both methods to find the next "country" (actually, the row and column of the next square on the checkerboard).</font></pre>
+    <dd>
+        Used by method 2 to check, at every node, whether there is an adjacent node already colored with the given color.
+
+    </dd>
+    <br>
+    <dt>int[] nextRowAndColumn(int row, int column)</dt>
+    <dd>Used by both methods to find the next "country" (actually, the row and column of the next square on the checkerboard).</dd>
+</dl>
         Here's the code for method 1:
 <pre>
     boolean explore1(int row, int column, int color) {
